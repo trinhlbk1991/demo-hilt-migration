@@ -15,8 +15,10 @@ import com.icedtealabs.demohiltmigration.api.AppApi
 import com.icedtealabs.demohiltmigration.databinding.ActivityMainBinding
 import com.icedtealabs.demohiltmigration.feature.dashboard.LoadProfileUseCase
 import dagger.android.*
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), HasAndroidInjector {
 
     @Inject
@@ -29,12 +31,10 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setSupportActionBar(binding.toolbar)
 
         val navController = findNavController(R.id.nav_host_fragment_content_main)

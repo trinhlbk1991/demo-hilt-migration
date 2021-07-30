@@ -1,14 +1,14 @@
 package com.icedtealabs.demohiltmigration.di
 
-import com.icedtealabs.demohiltmigration.App
-import dagger.Component
-import dagger.BindsInstance
+import dagger.Module
 import dagger.android.AndroidInjectionModule
 import dagger.android.support.AndroidSupportInjectionModule
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 
-
-@Component(
-    modules = [
+@InstallIn(SingletonComponent::class)
+@Module(
+    includes = [
         ApiModule::class,
         RepositoryModule::class,
         AndroidInjectionModule::class,
@@ -17,12 +17,4 @@ import dagger.android.support.AndroidSupportInjectionModule
         FragmentBindingModule::class,
     ]
 )
-interface AppComponent {
-
-    fun inject(app: App)
-
-    @Component.Builder
-    interface Builder {
-        fun build(): AppComponent
-    }
-}
+interface AppAggregatorModule

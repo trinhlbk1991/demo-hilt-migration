@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.icedtealabs.demohiltmigration.R
 import com.icedtealabs.demohiltmigration.databinding.FragmentLoginBinding
@@ -17,8 +18,7 @@ class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
 
-    @Inject
-    lateinit var viewModel: LoginViewModel
+    private val viewModel: LoginViewModel by viewModels()
 
     // This property is only valid between onCreateView and
     // onDestroyView.

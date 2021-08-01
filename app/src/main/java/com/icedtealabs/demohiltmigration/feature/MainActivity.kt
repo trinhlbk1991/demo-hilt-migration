@@ -1,5 +1,6 @@
 package com.icedtealabs.demohiltmigration.feature
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -13,6 +14,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.icedtealabs.demohiltmigration.R
 import com.icedtealabs.demohiltmigration.api.AppApi
 import com.icedtealabs.demohiltmigration.databinding.ActivityMainBinding
+import com.icedtealabs.demohiltmigration.feature.componentinjection.DemoActivity
 import com.icedtealabs.demohiltmigration.feature.dashboard.LoadProfileUseCase
 import dagger.android.*
 import dagger.hilt.android.AndroidEntryPoint
@@ -69,7 +71,10 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.action_settings -> {
+                startActivity(Intent(this, DemoActivity::class.java))
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
